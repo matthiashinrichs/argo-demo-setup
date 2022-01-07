@@ -1,0 +1,14 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+- install.yaml
+- ingress.yaml
+- argo-projects.yaml
+namespace: argocd
+
+configMapGenerator:
+- name: argocd-cmd-params-cm
+  behavior: merge
+  literals:
+    - server.insecure=true
