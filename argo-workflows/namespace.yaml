@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: argo-events
+  name: argo-workflows
   labels:
-    name: argo-events
+    name: argo-workflows
