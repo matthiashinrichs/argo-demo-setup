@@ -16,11 +16,15 @@ spec:
 
   # Only permit applications to deploy to the guestbook namespace in the same cluster
   destinations:
-  - server: https://kubernetes.default.svc
+  - namespace: '*'
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
 
-  # Enables namespace orphaned resource monitoring.
-  orphanedResources:
-    warn: true
 
 ---
 
@@ -42,8 +46,11 @@ spec:
 
   # Only permit applications to deploy to the guestbook namespace in the same cluster
   destinations:
-  - server: https://kubernetes.default.svc
-
-  # Enables namespace orphaned resource monitoring.
-  orphanedResources:
-    warn: true
+  - namespace: '*'
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
