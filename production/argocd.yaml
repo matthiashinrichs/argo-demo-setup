@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/matthiashinrichs/argo-demo-setup.git
     targetRevision: HEAD
-    path: install-argocd/overlays/production
+    path: install-argocd
 
   # Destination cluster and namespace to deploy the application
   destination:
