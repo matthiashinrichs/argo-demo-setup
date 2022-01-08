@@ -11,11 +11,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - pathType: ImplementationSpecific
         backend:
           service:
            name: argo-server
            port:
-             number: 2746
+             number: 80
     host: argo-workflows.127.0.0.1.nip.io
