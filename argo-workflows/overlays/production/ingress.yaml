@@ -5,7 +5,7 @@ metadata:
   namespace: argo
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`argo-workflows.127.0.0.1.nip.io`)

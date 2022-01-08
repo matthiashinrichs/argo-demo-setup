@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - kind: Rule
       match: Host(`argocd.127.0.0.1.nip.io`)
@@ -20,4 +20,3 @@ spec:
         - name: argocd-server
           port: 80
           scheme: h2c
-  
