@@ -1,21 +1,22 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: argo-workflows
+  name: argo-server
   namespace: argo
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  rules:
-  - http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-           name: argo-server
-           port:
-             number: 2746
-    host: argo-workflows.127.0.0.1.nip.io
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argo-workflows.127.0.0.1.nip.io`)
+      priority: 10
+      services:
+        - name: argo-server
+          port: 2746
+    - kind: Rule
+      match: Host(`argo-workflows.127.0.0.1.nip.io`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argo-server
+          port: 2746
+          scheme: h2c
